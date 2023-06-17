@@ -1,7 +1,7 @@
 # Spotify Liked Songs Converter
 Spotify for some reason does not allow you to download your liked songs to your Garmin device. This program is designed to fix that by converting your liked songs into an actual playlist periodically.
 
-**
+
 
 ## Instructions
 1. Clone repo
@@ -21,4 +21,3 @@ new_playlist_url - Playlist to convert liked songs into
 5. Run file!
 `python3 main.py`
 
-**
