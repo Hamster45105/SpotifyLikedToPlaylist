@@ -30,15 +30,19 @@ while True:
             tracks_playlist_items.append(tracks_playlist['items'][counter - 1]['track']['id'])
 
         #Get items currently in LIKES
+        limit = 50
+        offset = 0
+        liked_songs = []
 
-        #First 50 tracks
-        results = sp.current_user_saved_tracks(limit=50)
-        liked_songs = results['items']
-
-        # Keep requesting tracks until there are none left
-        while results['next']:
-            results = sp.next(results)
-            liked_songs.extend(results['items'])
+        while True:
+            results = sp.current_user_saved_tracks(limit=limit, offset=offset)
+            loop_liked_songs = results['items']
+            
+            if not liked_songs:
+                break
+            
+            liked_songs.extend(loop_liked_songs)
+            offset += limit 
 
         # Extract the track names and IDs and add them to a list
         tracks_liked_items = []
