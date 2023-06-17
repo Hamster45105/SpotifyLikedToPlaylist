@@ -6,7 +6,7 @@ import requests
 
 def check_connection(timeout):
     try:
-        requests.head("http://www.example.com/", timeout=timeout)
+        requests.head("http://www.google.com/", timeout=timeout)
         return True
     except requests.ConnectionError:
         return False
