@@ -1,2 +1,4 @@
 /venv
 cred.py
+/__pycache__
+.cache
