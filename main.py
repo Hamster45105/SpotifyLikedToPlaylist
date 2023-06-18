@@ -1,6 +1,6 @@
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
-import cred
+import config
 from time import sleep
 import requests
 
@@ -14,13 +14,13 @@ def check_connection(timeout):
 
 scope = ['user-library-read', 'playlist-read-private', 'playlist-modify-private']
 
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=cred.client_ID, client_secret=cred.client_SECRET, redirect_uri=cred.redirect_url, scope=scope, open_browser=False))
+sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=config.client_ID, client_secret=config.client_SECRET, redirect_uri=config.redirect_url, scope=scope, open_browser=False))
 
 while True:
     internet_result = check_connection(1)
     if internet_result == True:
         #Get items currently in PLAYLIST
-        tracks_playlist = sp.user_playlist_tracks(playlist_id=cred.new_playlist_url)
+        tracks_playlist = sp.user_playlist_tracks(playlist_id=config.new_playlist_url)
 
         tracks_playlist_items = []
 
@@ -51,9 +51,9 @@ while True:
         if tracks_liked_items != tracks_playlist_items:
             for item in tracks_playlist_items:
                 if item not in tracks_liked_items:
-                    sp.user_playlist_remove_all_occurrences_of_tracks(user=sp.current_user(), playlist_id=cred.new_playlist_url, tracks=[item])
+                    sp.user_playlist_remove_all_occurrences_of_tracks(user=sp.current_user(), playlist_id=config.new_playlist_url, tracks=[item])
             for item in tracks_liked_items:
                 if item not in tracks_playlist_items:
-                    sp.playlist_add_items(playlist_id=cred.new_playlist_url, items=[item], position=0)
+                    sp.playlist_add_items(playlist_id=config.new_playlist_url, items=[item], position=0)
 
-    sleep(60)
+    sleep(config.sleep_interval)

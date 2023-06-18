@@ -9,7 +9,7 @@ Spotify for some reason does not allow you to download your liked songs to your 
 `git clone https://github.com/TheCodingHamster/Spotify-Liked-Songs-Converter.git`
 
 
-2. Copy and rename `cred.py.example` to `cred.py`
+2. Copy and rename `config.py.example` to `config.py`
 
 `cp cred.py.example cred.py`
 
@@ -21,6 +21,8 @@ client_ID - Spotify API Client ID
 client_SECRET - Spotify API Client Secret
 
 new_playlist_url - Playlist to convert liked songs into
+
+sleep_interval - Interval for running program (seconds)
 
 
 4. Install `spotipy`
