@@ -1,15 +1,15 @@
 # Spotify Liked Songs Converter
 
-Spotify for some reason does not allow you to download your liked songs to your Garmin device. This program is designed to fix that by converting your liked songs into an actual playlist periodically.
+There is multiple reasons why you would want your liked songs converted into an actual playlist periodically. This program is designed to help you with that.
 
 ## Instructions
 
-### Spotify DEV Setup
+### Spotify Developer Setup
 
 1. Go to the [Spotify developer dashboard](https://developer.spotify.com/dashboard/create) and login
 
 
-4. Fill in app name, description (can be anything) and set “Redirect URI” to “http://localhost”
+4. Fill in app name and description (can be anything). Then set “Redirect URI” to “http://localhost”
 
 
 5. Click save
@@ -49,4 +49,4 @@ sleep_interval - Interval for running program (seconds)
 
 
 ### Using Code
-After you run the code, the first time a message will appear telling you to go to a URL and enter the URL you are directed to. GO TO THIS URL and grant the permissions. Then, it will redirect you to a website that DOSEN’T EXIST, for example “https://localhost/callback/***”. Copy this URL and paste it into the correct spot in the program. Now the program will run. You do not have to do this step every time, only the first
+After you run the code, the first time a message will appear telling you to go to a URL and enter the URL you are directed to. GO TO THIS URL and grant the permissions. Then, it will redirect you to a website that DOSEN’T EXIST, for example “https://localhost/callback/***”. Copy this URL and paste it into the correct spot in the program. Now the program will run. You do not have to do this step every time, only the first.
