@@ -1,6 +1,6 @@
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
-import cred
+import config as cred
 from time import sleep
 import requests
 
