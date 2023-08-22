@@ -18,7 +18,6 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=cred.client_ID, client_
 
 while True:
     try:
-
         internet_result = check_connection(5)
         if internet_result == True:
             #Get items currently in PLAYLIST
@@ -60,5 +59,6 @@ while True:
         sleep(cred.sleep_interval)
 
     except Exception as e:
+        # Becuase the program goes on a loop, if an error occurs it will log and keep going in case it is just a once off connection error or something similar.
         print(f"An error occurred: {e}")
         continue
