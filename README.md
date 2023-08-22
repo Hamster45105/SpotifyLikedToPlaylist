@@ -33,6 +33,8 @@ client_ID - Spotify API Client ID
 
 client_SECRET - Spotify API Client Secret
 
+redirect_url - Should be the same as what is in the Spotify developer dashboard.
+
 new_playlist_url - Playlist to convert liked songs into
 
 sleep_interval - Interval for running program (seconds)
