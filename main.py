@@ -69,7 +69,7 @@ while True:
                 for item in tracks_liked_items:
                     if item not in tracks_playlist_items:
                         sp.playlist_add_items(playlist_id=new_playlist_url, items=[item], position=0)            
-        sleep(sleep_interval)
+        sleep(int(sleep_interval))
 
     except Exception as e:
         # Becuase the program goes on a loop, if an error occurs it will log and keep going in case it is just a once off connection error or something similar.
