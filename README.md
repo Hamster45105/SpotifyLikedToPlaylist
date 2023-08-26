@@ -9,7 +9,7 @@ There is multiple reasons why you would want your liked songs converted into an 
 1. Go to the [Spotify developer dashboard](https://developer.spotify.com/dashboard/create) and login
 
 
-4. Fill in app name and description (can be anything). Then set “Redirect URI” to “https://hamster45105.github.io/Spotify-Liked-Songs-Converter/”
+4. Fill in app name and description (can be anything). Then set “Redirect URI” to “https://hamster45105.github.io/SpotifyLikedToPlaylist/”
 
 
 5. Click save
@@ -21,7 +21,7 @@ There is multiple reasons why you would want your liked songs converted into an 
 
 1. Clone repo
 
-`git clone https://github.com/TheCodingHamster/Spotify-Liked-Songs-Converter.git`
+`git clone https://github.com/TheCodingHamster/SpotifyLikedToPlaylist.git`
 
 
 2. Copy and rename `config_example.json` to `config.json`
