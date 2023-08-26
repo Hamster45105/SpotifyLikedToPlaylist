@@ -49,4 +49,4 @@ SLEEP_INTERVAL - Interval for running program (seconds)
 
 
 ### Using Code
-After you run the code, the first time a message will appear telling you to go to a URL and enter the URL you are directed to. GO TO THIS URL and grant the permissions. Then, it will redirect you to a website that DOSEN’T EXIST, for example “https://localhost/callback/***”. Copy this URL and paste it into the correct spot in the program. Now the program will run. You do not have to do this step every time, only the first.
+After you run the code, the first time a message will appear telling you to go to a URL and enter the URL you are directed to. GO TO THIS URL and grant the permissions. Then, it will redirect you to a website with a textbox in the middle. Click the copy to clipboard button. Then, paste the URL into the correct spot in the program. Now the program will run. You do not have to do this step every time, only the first.
