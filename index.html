@@ -53,6 +53,7 @@
             // Get the value of the code parameter from the URL
             const urlParams = new URLSearchParams(window.location.search);
             const code = urlParams.get('code');
+            const error = urlParams.get('error');
 
             // If the code parameter is present, show a popup with its value
             if (code) {
@@ -63,7 +64,7 @@
                 popup.appendChild(h2);
                 const input = document.createElement('input');
                 input.type = 'text';
-                input.value = 'https://hamster45105.github.io/spotify-liked-songs-converter?code=' + code;
+                input.value = 'https://hamster45105.github.io/Spotify-Liked-Songs-Converter?code=' + code;
                 input.readOnly = true;
                 popup.appendChild(input);
                 const button = document.createElement('button');
@@ -71,10 +72,16 @@
                 button.addEventListener('click', function() {
                     input.select();
                     document.execCommand('copy');
-                    alert('Copied to clipboard!');
+                    button.textContent = 'Copied!';
+                    button.style.backgroundColor = '#008000';
                 });
                 popup.appendChild(button);
                 document.body.appendChild(popup);
+            } else if (error === 'access_denied') {
+                const errorDiv = document.createElement('div');
+                errorDiv.classList.add('error');
+                errorDiv.textContent = 'Access denied. Please try again.';
+                document.body.appendChild(errorDiv);
             } else {
                 const error = document.createElement('div');
                 error.classList.add('error');
