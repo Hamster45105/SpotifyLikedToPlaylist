@@ -9,7 +9,7 @@ There is multiple reasons why you would want your liked songs converted into an 
 1. Go to the [Spotify developer dashboard](https://developer.spotify.com/dashboard/create) and login
 
 
-4. Fill in app name and description (can be anything). Then set “Redirect URI” to “http://localhost”
+4. Fill in app name and description (can be anything). Then set “Redirect URI” to “https://hamster45105.github.io/Spotify-Liked-Songs-Converter/”
 
 
 5. Click save
@@ -32,8 +32,6 @@ There is multiple reasons why you would want your liked songs converted into an 
 CLIENT_ID - Spotify API Client ID
 
 CLIENT_SECRET - Spotify API Client Secret
-
-REDIRECT_URL - Should be the same as what is in the Spotify developer dashboard
 
 NEW_PLAYLIST_URL - Playlist to convert liked songs into
 

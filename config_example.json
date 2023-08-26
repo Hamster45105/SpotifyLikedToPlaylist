@@ -1,7 +1,6 @@
 {
     "CLIENT_ID": "", 
     "CLIENT_SECRET": "",
-    "REDIRECT_URL": "http://localhost",
     "NEW_PLAYLIST_URL": "",
     "SLEEP_INTERVAL": "60"
 }

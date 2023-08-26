@@ -17,7 +17,7 @@ with open('config.json') as f:
 
 client_id = settings['CLIENT_ID']
 client_secret = settings['CLIENT_SECRET']
-redirect_uri = settings['REDIRECT_URL']
+redirect_uri = "https://hamster45105.github.io/Spotify-Liked-Songs-Converter/"
 new_playlist_url = settings['NEW_PLAYLIST_URL']
 sleep_interval = settings['SLEEP_INTERVAL']
 
