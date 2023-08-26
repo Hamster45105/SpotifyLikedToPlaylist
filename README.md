@@ -9,7 +9,7 @@ There is multiple reasons why you would want your liked songs converted into an 
 1. Go to the [Spotify developer dashboard](https://developer.spotify.com/dashboard/create) and login
 
 
-4. Fill in app name and description (can be anything). Then set “Redirect URI” to “https://hamster45105.github.io/SpotifyLikedToPlaylist/”
+4. Fill in app name and description (can be anything). Then set “Redirect URI” to “https://hamster45105.github.io/spotipy/”
 
 
 5. Click save
