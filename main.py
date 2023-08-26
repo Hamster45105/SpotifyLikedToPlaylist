@@ -1,8 +1,8 @@
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
-import config as cred
 from time import sleep
 import requests
+import json
 
 def check_connection(timeout):
     try:
@@ -10,10 +10,23 @@ def check_connection(timeout):
         return True
     except requests.ConnectionError:
         return False
-    
+
+
+with open('config.json') as f:
+    settings = json.load(f)
+
+client_id = settings['CLIENT_ID']
+client_secret = settings['CLIENT_SECRET']
+redirect_uri = settings['REDIRECT_URL']
+new_playlist_url = settings['NEW_PLAYLIST_URL']
+sleep_interval = settings['SLEEP_INTERVAL']
+
+if client_id == "" or client_secret == "" or redirect_uri == "" or new_playlist_url == "" or sleep_interval == "":
+    print("Please fill out all fields in config.json")
+    exit()
 
 scope = ['user-library-read', 'playlist-read-private', 'playlist-modify-private']
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=cred.client_ID, client_secret=cred.client_SECRET, redirect_uri=cred.redirect_url, scope=scope, open_browser=False))
+sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=client_id, client_secret=client_secret, redirect_uri=redirect_uri, scope=scope, open_browser=False))
 
 
 while True:
@@ -21,7 +34,7 @@ while True:
         internet_result = check_connection(5)
         if internet_result == True:
             #Get items currently in PLAYLIST
-            tracks_playlist = sp.user_playlist_tracks(playlist_id=cred.new_playlist_url)
+            tracks_playlist = sp.user_playlist_tracks(playlist_id=new_playlist_url)
 
             tracks_playlist_items = []
 
@@ -52,13 +65,13 @@ while True:
             if tracks_liked_items != tracks_playlist_items:
                 for item in tracks_playlist_items:
                     if item not in tracks_liked_items:
-                        sp.user_playlist_remove_all_occurrences_of_tracks(user=sp.current_user(), playlist_id=cred.new_playlist_url, tracks=[item])
+                        sp.user_playlist_remove_all_occurrences_of_tracks(user=sp.current_user(), playlist_id=new_playlist_url, tracks=[item])
                 for item in tracks_liked_items:
                     if item not in tracks_playlist_items:
-                        sp.playlist_add_items(playlist_id=cred.new_playlist_url, items=[item], position=0)            
-        sleep(cred.sleep_interval)
+                        sp.playlist_add_items(playlist_id=new_playlist_url, items=[item], position=0)            
+        sleep(sleep_interval)
 
     except Exception as e:
         # Becuase the program goes on a loop, if an error occurs it will log and keep going in case it is just a once off connection error or something similar.
-        print(f"An error occurred: {e}")
+        print(f"An unknown error occurred: " + str(e))
         continue

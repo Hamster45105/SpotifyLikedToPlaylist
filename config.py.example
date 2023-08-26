@@ -1,5 +1,0 @@
-client_ID=''
-client_SECRET=''
-redirect_url='http://localhost'
-new_playlist_url = ""
-sleep_interval = 60

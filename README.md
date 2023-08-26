@@ -24,25 +24,25 @@ There is multiple reasons why you would want your liked songs converted into an 
 `git clone https://github.com/TheCodingHamster/Spotify-Liked-Songs-Converter.git`
 
 
-2. Copy and rename `config.py.example` to `config.py`
+2. Copy and rename `config_example.json` to `config.json`
 
 
 3. Update values in file
 
-client_ID - Spotify API Client ID
+CLIENT_ID - Spotify API Client ID
 
-client_SECRET - Spotify API Client Secret
+CLIENT_SECRET - Spotify API Client Secret
 
-redirect_url - Should be the same as what is in the Spotify developer dashboard
+REDIRECT_URL - Should be the same as what is in the Spotify developer dashboard
 
-new_playlist_url - Playlist to convert liked songs into
+NEW_PLAYLIST_URL - Playlist to convert liked songs into
 
-sleep_interval - Interval for running program (seconds)
+SLEEP_INTERVAL - Interval for running program (seconds)
 
 
-4. Install `spotipy`
+4. Install PIP requirements
 
-`pip install spotipy`
+`pip install -r requirements.txt`
 
 
 5. Run file!
