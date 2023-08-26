@@ -17,7 +17,7 @@ with open('config.json') as f:
 
 client_id = settings['CLIENT_ID']
 client_secret = settings['CLIENT_SECRET']
-redirect_uri = "https://hamster45105.github.io/spotipy/"
+redirect_uri = "https://hamster45105.github.io/spotipy"
 new_playlist_url = settings['NEW_PLAYLIST_URL']
 sleep_interval = settings['SLEEP_INTERVAL']
 
