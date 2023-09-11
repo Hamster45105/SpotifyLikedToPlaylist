@@ -47,8 +47,12 @@ redirect_uri = "https://hamster45105.github.io/spotipy"
 new_playlist_url = settings['NEW_PLAYLIST_URL']
 sleep_interval = settings['SLEEP_INTERVAL']
 
-if client_id == "" or client_secret == "" or redirect_uri == "" or new_playlist_url == "" or sleep_interval == "":
-    print("Please fill out all fields in config.json")
+for key, value in settings.items():
+    if not value:
+        print(f"The value for {key} is empty. Please fill in.")
+        stop = True
+
+if stop == True:
     exit()
 
 scope = ['user-library-read', 'playlist-read-private', 'playlist-modify-private']
