@@ -47,6 +47,8 @@ redirect_uri = "https://hamster45105.github.io/spotipy"
 new_playlist_url = settings['NEW_PLAYLIST_URL']
 sleep_interval = settings['SLEEP_INTERVAL']
 
+stop = False
+
 for key, value in settings.items():
     if not value:
         print(f"The value for {key} is empty. Please fill in.")
