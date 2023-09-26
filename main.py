@@ -54,8 +54,6 @@ sleep_interval = settings['SLEEP_INTERVAL']
 playlist_private = settings['READ_PRIVATE']
 playlist_collab = settings['READ_COLLABORATIVE']
 
-print(playlist_private)
-
 # Settings check
 stop = False
 
