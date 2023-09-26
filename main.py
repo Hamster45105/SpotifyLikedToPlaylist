@@ -86,8 +86,7 @@ while True:
             limit = 50
 
             while True:
-                results = sp.current_user_saved_tracks(limit=limit,
-                                                       offset=offset)
+                results = sp.current_user_saved_tracks(limit=limit, offset=offset)
                 items = results['items']
                 liked_songs.extend(items)
                 if len(items) < limit:
@@ -103,17 +102,13 @@ while True:
             if tracks_liked_items != tracks_playlist_items:
                 for item in tracks_playlist_items:
                     if item not in tracks_liked_items:
-                        sp.user_playlist_remove_all_occurrences_of_tracks(user=sp.current_user(),
-                                                                          playlist_id=new_playlist_url,
-                                                                          tracks=[item])
+                        sp.user_playlist_remove_all_occurrences_of_tracks(user=sp.current_user(), playlist_id=new_playlist_url, tracks=[item])
                 for item in tracks_liked_items:
                     if item not in tracks_playlist_items:
-                        sp.playlist_add_items(playlist_id=new_playlist_url,
-                                              items=[item],
-                                              position=0)
+                        sp.playlist_add_items(playlist_id=new_playlist_url, items=[item], position=0)
         sleep(int(sleep_interval))
 
     except Exception as e:
         # Becuase the program goes on a loop, if an error occurs it will log and keep going in case it is just a once off connection error or something similar.
-        print(f"An unknown error occurred: " + str(e))
+        print("An unknown error occurred: " + str(e))
         continue
