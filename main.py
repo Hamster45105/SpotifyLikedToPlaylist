@@ -69,7 +69,7 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
 while True:
     try:
         internet_result = check_connection(5)
-        if internet_result:
+        if internet_result == True:
             #Get items currently in PLAYLIST
             tracks_playlist = sp.user_playlist_tracks(playlist_id=new_playlist_url)
 
