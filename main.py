@@ -11,10 +11,10 @@ def check_connection(timeout):
     except requests.ConnectionError:
         return False
 
-with open('config.json') as f:
+with open('config.json', encoding='utf-8') as f:
     settings = json.load(f)
 
-with open('config_example.json') as f:
+with open('config_example.json', encoding='utf-8') as f:
     default_settings = json.load(f)
 
 # Add any additional settings or remove any ones taken away
@@ -38,7 +38,7 @@ if len(deleted_settings) > 0:
     for item in deleted_settings:
         del settings[item]
 
-with open('config.json', 'w') as f:
+with open('config.json', 'w', encoding='utf-8') as f:
     json.dump(settings, f, indent=4)
 
 client_id = settings['CLIENT_ID']
