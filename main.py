@@ -1,8 +1,8 @@
+from time import sleep
+import json
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
-from time import sleep
 import requests
-import json
 
 def check_connection(timeout):
     try:
@@ -54,17 +54,22 @@ for key, value in settings.items():
         print(f"The value for {key} is empty. Please fill in.")
         stop = True
 
-if stop == True:
+if stop:
     exit()
 
 scope = ['user-library-read', 'playlist-read-private', 'playlist-modify-private']
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=client_id, client_secret=client_secret, redirect_uri=redirect_uri, scope=scope, open_browser=False))
+sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
+    client_id=client_id,
+    client_secret=client_secret,
+    redirect_uri=redirect_uri,
+    scope=scope,
+    open_browser=False))
 
 
 while True:
     try:
         internet_result = check_connection(5)
-        if internet_result == True:
+        if internet_result:
             #Get items currently in PLAYLIST
             tracks_playlist = sp.user_playlist_tracks(playlist_id=new_playlist_url)
 
@@ -78,10 +83,11 @@ while True:
             #Get items currently in LIKES
             liked_songs = []
             offset = 0
-            limit = 50 
+            limit = 50
 
             while True:
-                results = sp.current_user_saved_tracks(limit=limit, offset=offset)
+                results = sp.current_user_saved_tracks(limit=limit,
+                                                       offset=offset)
                 items = results['items']
                 liked_songs.extend(items)
                 if len(items) < limit:
@@ -97,10 +103,14 @@ while True:
             if tracks_liked_items != tracks_playlist_items:
                 for item in tracks_playlist_items:
                     if item not in tracks_liked_items:
-                        sp.user_playlist_remove_all_occurrences_of_tracks(user=sp.current_user(), playlist_id=new_playlist_url, tracks=[item])
+                        sp.user_playlist_remove_all_occurrences_of_tracks(user=sp.current_user(),
+                                                                          playlist_id=new_playlist_url,
+                                                                          tracks=[item])
                 for item in tracks_liked_items:
                     if item not in tracks_playlist_items:
-                        sp.playlist_add_items(playlist_id=new_playlist_url, items=[item], position=0)            
+                        sp.playlist_add_items(playlist_id=new_playlist_url,
+                                              items=[item],
+                                              position=0)
         sleep(int(sleep_interval))
 
     except Exception as e:
