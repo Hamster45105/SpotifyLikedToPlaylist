@@ -80,7 +80,7 @@ if playlist_private.lower() == "true":
 elif playlist_private.lower() == "false":
     playlist_private = False
 else:
-    print("The playlist private setting you entered is not valid. Please enter a valid boolean.")
+    print("The playlist private setting you entered is not valid. Please enter either True or False.")
     stop = True
 
 if playlist_collab.lower() == "true":
@@ -88,7 +88,7 @@ if playlist_collab.lower() == "true":
 elif playlist_collab.lower() == "false":
     playlist_collab = False
 else:
-    print("The playlist collaborative setting you entered is not valid. Please enter a valid boolean.")
+    print("The playlist collaborative setting you entered is not valid. Please enter either True or False")
     stop = True
 
 if stop == True:
