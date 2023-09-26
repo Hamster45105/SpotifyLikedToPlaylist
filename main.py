@@ -3,6 +3,7 @@ import json
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import requests
+import re
 
 def check_connection(timeout):
     try:
@@ -10,6 +11,10 @@ def check_connection(timeout):
         return True
     except requests.ConnectionError:
         return False
+
+def is_spotify_playlist_url(url):
+    pattern = r'^https?://open\.spotify\.com/playlist/[a-zA-Z0-9?=]+$'
+    return bool(re.match(pattern, url))
 
 with open('config.json', encoding='utf-8') as f:
     settings = json.load(f)
@@ -46,24 +51,60 @@ client_secret = settings['CLIENT_SECRET']
 redirect_uri = "https://hamster45105.github.io/spotipy"
 new_playlist_url = settings['NEW_PLAYLIST_URL']
 sleep_interval = settings['SLEEP_INTERVAL']
+playlist_private = settings['READ_PRIVATE']
+playlist_collab = settings['READ_COLLABORATIVE']
 
+print(playlist_private)
+
+# Settings check
 stop = False
 
+# Check if empty
 for key, value in settings.items():
     if not value:
         print(f"The value for {key} is empty. Please fill in.")
         stop = True
 
-if stop:
+# Check if valid
+playlist_check = is_spotify_playlist_url(new_playlist_url)
+if playlist_check == False:
+    print("The playlist URL you entered is not valid. Please enter a valid playlist URL.")
+    stop = True
+
+try:
+    sleep_interval = int(sleep_interval)
+except ValueError:
+    print("The sleep interval you entered is not valid. Please enter a valid integer.")
+    stop = True
+
+if playlist_private.lower() == "true":
+    playlist_private = True
+elif playlist_private.lower() == "false":
+    playlist_private = False
+else:
+    print("The playlist private setting you entered is not valid. Please enter a valid boolean.")
+    stop = True
+
+if playlist_collab.lower() == "true":
+    playlist_collab = True
+elif playlist_collab.lower() == "false":
+    playlist_collab = False
+else:
+    print("The playlist collaborative setting you entered is not valid. Please enter a valid boolean.")
+    stop = True
+
+if stop == True:
     exit()
 
-scope = ['user-library-read', 'playlist-read-private', 'playlist-modify-private']
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
-    client_id=client_id,
-    client_secret=client_secret,
-    redirect_uri=redirect_uri,
-    scope=scope,
-    open_browser=False))
+scope = ['user-library-read']
+
+if playlist_private:
+    scope.append('playlist-read-private')
+    scope.append('playlist-modify-private')
+if playlist_collab:
+    scope.append('playlist-read-collaborative')
+
+sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=client_id, client_secret=client_secret, redirect_uri=redirect_uri, scope=scope, open_browser=False))
 
 
 while True:
@@ -106,7 +147,7 @@ while True:
                 for item in tracks_liked_items:
                     if item not in tracks_playlist_items:
                         sp.playlist_add_items(playlist_id=new_playlist_url, items=[item], position=0)
-        sleep(int(sleep_interval))
+        sleep(sleep_interval)
 
     except Exception as e:
         # Becuase the program goes on a loop, if an error occurs it will log and keep going in case it is just a once off connection error or something similar.
