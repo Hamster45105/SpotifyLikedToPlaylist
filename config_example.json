@@ -2,7 +2,5 @@
     "CLIENT_ID": "", 
     "CLIENT_SECRET": "",
     "NEW_PLAYLIST_URL": "",
-    "SLEEP_INTERVAL": "60",
-    "READ_PRIVATE": "False",
-    "READ_COLLABORATIVE": "False"
+    "SLEEP_INTERVAL": "60"
 }

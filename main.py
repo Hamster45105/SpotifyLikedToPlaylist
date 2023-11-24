@@ -51,8 +51,6 @@ client_secret = settings['CLIENT_SECRET']
 redirect_uri = "https://hamster45105.github.io/spotipy"
 new_playlist_url = settings['NEW_PLAYLIST_URL']
 sleep_interval = settings['SLEEP_INTERVAL']
-playlist_private = settings['READ_PRIVATE']
-playlist_collab = settings['READ_COLLABORATIVE']
 
 # Settings check
 stop = False
@@ -75,32 +73,10 @@ except ValueError:
     print("The sleep interval you entered is not valid. Please enter a valid integer.")
     stop = True
 
-if playlist_private.lower() == "true":
-    playlist_private = True
-elif playlist_private.lower() == "false":
-    playlist_private = False
-else:
-    print("The playlist private setting you entered is not valid. Please enter either True or False.")
-    stop = True
-
-if playlist_collab.lower() == "true":
-    playlist_collab = True
-elif playlist_collab.lower() == "false":
-    playlist_collab = False
-else:
-    print("The playlist collaborative setting you entered is not valid. Please enter either True or False")
-    stop = True
-
 if stop == True:
     exit()
 
-scope = ['user-library-read']
-
-if playlist_private:
-    scope.append('playlist-read-private')
-    scope.append('playlist-modify-private')
-if playlist_collab:
-    scope.append('playlist-read-collaborative')
+scope = ['user-library-read', 'playlist-read-private', 'playlist-modify-private', 'playlist-read-collaborative' ]
 
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=client_id, client_secret=client_secret, redirect_uri=redirect_uri, scope=scope, open_browser=False))
 
