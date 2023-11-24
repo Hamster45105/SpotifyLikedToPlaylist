@@ -9,13 +9,13 @@ There is multiple reasons why you would want your liked songs converted into an 
 1. Go to the [Spotify developer dashboard](https://developer.spotify.com/dashboard/create) and login
 
 
-4. Fill in app name and description (can be anything). Then set “Redirect URI” to “https://hamster45105.github.io/spotipy” (IMPORTANT: Make sure there is NO slash at the end!)
+2. Fill in app name and description (can be anything). Then set “Redirect URI” to “https://hamster45105.github.io/spotipy” (IMPORTANT: Make sure there is NO slash at the end!)
 
 
-5. Click save
+3. Click save
 
 
-6. Click “Settings”. Note down the “Client ID”, click “View client secret” and note that down as well. You need them for the next steps.
+4. Click “Settings”. Note down the “Client ID”, click “View client secret” and note that down as well. You need them for the next steps.
 
 ### Program Setup
 
