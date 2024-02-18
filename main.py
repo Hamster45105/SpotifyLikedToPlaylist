@@ -1,8 +1,6 @@
-from time import sleep
 import json
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
-import requests
 import re
 
 def is_spotify_playlist_url(url):
