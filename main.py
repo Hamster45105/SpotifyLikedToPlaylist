@@ -2,6 +2,15 @@ import json
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import re
+import requests
+
+def check_connection(timeout):
+    try:
+        requests.head("https://github.com/", timeout=timeout)
+        return True
+
+    except requests.ConnectionError:
+        return False
 
 def is_spotify_playlist_url(url):
     pattern = r'^https?://open\.spotify\.com/playlist/[a-zA-Z0-9?=]+$'
@@ -65,6 +74,9 @@ scope = ['user-library-read', 'playlist-read-private', 'playlist-modify-private'
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=client_id, client_secret=client_secret, redirect_uri=redirect_uri, scope=scope, open_browser=False))
 
 try:
+    internet_result = check_connection(5)
+    if internet_result == False:
+        raise Exception("Internet connection check failed")
     #Get items currently in PLAYLIST
     tracks_playlist = sp.user_playlist_tracks(playlist_id=new_playlist_url)
 
