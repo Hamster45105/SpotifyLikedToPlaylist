@@ -1,6 +1,8 @@
 # Spotify Liked Songs Converter
 
-There is multiple reasons why you would want your liked songs converted into an actual playlist periodically. This program is designed to help you with that.
+There is multiple reasons why you would want your liked songs converted into an actual playlist periodically. This program will do that for you.
+
+A good idea would be to set this up on a server that you always have running (eg. Raspberry Pi) and have it automatically run. Once it is set up, it works great.
 
 ## Instructions
 
