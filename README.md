@@ -2,7 +2,7 @@
 
 There is multiple reasons why you would want your liked songs converted into an actual playlist periodically. This program will do that for you.
 
-A good idea would be to set this up on a server that you always have running (eg. Raspberry Pi) and have it automatically run. Once it is set up, it works great.
+A good idea would be to set this up on a server that you always have running (eg. Raspberry Pi) and have it automatically run every 5 minutes using cron. Once it is set up, it works great in the background.
 
 ## Instructions
 
@@ -42,7 +42,6 @@ SLEEP_INTERVAL - Interval for running program (seconds)
 5. Run file!
 
 `python3 main.py`
-
 
 ### Using Code
 After you run the code, the first time a message will appear telling you to go to a URL and enter the URL you are directed to. GO TO THIS URL and grant the permissions. Then, it will redirect you to a website with a textbox in the middle. Click the copy to clipboard button. Then, paste the URL into the correct spot in the program. Now the program will run. You do not have to do this step every time, only the first.
