@@ -32,13 +32,6 @@ NEW_PLAYLIST_URL - Playlist to convert liked songs into
 
 SLEEP_INTERVAL - Interval for running program (seconds)
 
-In order to make sure that the minimum permissions are requested you have to specify the type of playlist you are converting your liked songs to in these two variables:
-
-READ_PRIVATE - Either true or false, set to true if your playlist is a private one
-
-READ_COLLABORATIVE - Either true or false, set to true if your playlist is a collaborative one
-
-
 4. Install PIP requirements
 
 `pip install -r requirements.txt`
