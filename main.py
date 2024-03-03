@@ -1,8 +1,9 @@
-import json
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import re
 import requests
+import dotenv
+import os
 
 def check_connection(timeout):
     try:
@@ -16,57 +17,18 @@ def is_spotify_playlist_url(url):
     pattern = r'^https?://open\.spotify\.com/playlist/[a-zA-Z0-9?=]+$'
     return bool(re.match(pattern, url))
 
-with open('config.json', encoding='utf-8') as f:
-    settings = json.load(f)
+# Load settings using DOTenv
+dotenv.load_dotenv(".env")
 
-with open('config_example.json', encoding='utf-8') as f:
-    default_settings = json.load(f)
-
-# Add any additional settings or remove any ones taken away
-
-required_settings = []
-deleted_settings = []
-
-for item in default_settings:
-    if item not in settings:
-        required_settings.append(item)
-
-if len(required_settings) > 0:
-    for item in required_settings:
-        settings.update({item: default_settings[item]})
-
-for item in settings:
-    if item not in default_settings:
-        deleted_settings.append(item)
-
-if len(deleted_settings) > 0:
-    for item in deleted_settings:
-        del settings[item]
-
-with open('config.json', 'w', encoding='utf-8') as f:
-    json.dump(settings, f, indent=4)
-
-client_id = settings['CLIENT_ID']
-client_secret = settings['CLIENT_SECRET']
+client_id = os.getenv("CLIENT_ID")
+client_secret = os.getenv("CLIENT_SECRET")
 redirect_uri = "https://hamster45105.github.io/spotipy"
-new_playlist_url = settings['NEW_PLAYLIST_URL']
+new_playlist_url = os.getenv("NEW_PLAYLIST_URL")
 
-# Settings check
-stop = False
-
-# Check if empty
-for key, value in settings.items():
-    if not value:
-        print(f"The value for {key} is empty. Please fill in.")
-        stop = True
-
-# Check if valid
+# Check if playlist valid
 playlist_check = is_spotify_playlist_url(new_playlist_url)
 if playlist_check == False:
     print("The playlist URL you entered is not valid. Please enter a valid playlist URL.")
-    stop = True
-
-if stop == True:
     exit()
 
 scope = ['user-library-read', 'playlist-read-private', 'playlist-modify-private', 'playlist-read-collaborative' ]
