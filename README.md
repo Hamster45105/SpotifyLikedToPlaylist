@@ -19,7 +19,7 @@ A good idea would be to set this up on a server that you always have running (eg
 
 `git clone https://github.com/TheCodingHamster/SpotifyLikedToPlaylist.git`
 
-2. Copy and rename `.env.example` to `,env`
+2. Copy and rename `.env.example` to `.env`
 
 3. Update values in file
 
