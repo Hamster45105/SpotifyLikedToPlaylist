@@ -1,6 +1,6 @@
 # Spotify Liked Songs Converter
 
-There is multiple reasons why you would want your liked songs converted into an actual playlist periodically. This program will do that for you.
+There are multiple reasons why you would want your liked songs converted into an actual playlist periodically. This program will do that for you.
 
 A good idea would be to set this up on a server that you always have running (eg. Raspberry Pi) and have it automatically run every 5 minutes using cron. Once it is set up, it works great in the background.
 
@@ -31,8 +31,6 @@ CLIENT_ID - Spotify API Client ID
 CLIENT_SECRET - Spotify API Client Secret
 
 NEW_PLAYLIST_URL - Playlist to convert liked songs into
-
-SLEEP_INTERVAL - Interval for running program (seconds)
 
 4. Install PIP requirements
 
